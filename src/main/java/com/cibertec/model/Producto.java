@@ -3,6 +3,8 @@ package com.cibertec.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -19,11 +21,22 @@ public class Producto {
 	@Column(name="pre_prod")
 	private double precio;
 	
-	private int idcategoria;
+	//@Column(name="idcategoria")
+	//private int idcategoria;
+	
+	@ManyToOne
+	@JoinColumn(name="idcategoria")
+	private Categoria categoria;
+	
 	@Column(name="est_prod")
 	private int estado;
 	
-	private int idproveedor;
+	@ManyToOne
+	@JoinColumn(name="idproveedor")
+	private Proveedor proveedor;
+	
+	//@Column(name="idcategoria")
+	//private int idproveedor;
 	
 	// Métodos getters y setters
 	public String getCodigo() {
@@ -58,12 +71,12 @@ public class Producto {
 		this.precio = precio;
 	}
 
-	public int getIdcategoria() {
-		return idcategoria;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setIdcategoria(int idcategoria) {
-		this.idcategoria = idcategoria;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
 
 	public int getEstado() {
@@ -74,12 +87,11 @@ public class Producto {
 		this.estado = estado;
 	}
 
-	public int getIdproveedor() {
-		return idproveedor;
+	public Proveedor getProveedor() {
+		return proveedor;
 	}
 
-	public void setIdproveedor(int idproveedor) {
-		this.idproveedor = idproveedor;
-	}
-
+	public void setProveedor(Proveedor proveedor) {
+		this.proveedor = proveedor;
+	}	
 }

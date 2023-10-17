@@ -6,4 +6,8 @@ import com.cibertec.model.Producto;
 
 public interface IProductoRepository extends JpaRepository<Producto, String> {
 
+	Producto findBycodigo(String codigo);
+	
+	
+	
 }
